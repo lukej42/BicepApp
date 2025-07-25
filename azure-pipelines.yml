@@ -1,0 +1,36 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  location: 'uksouth'
+  resourceGroup: 'bicep-app'
+
+  steps:
+  - task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure subscription 1(525c7c1f-f5e9-4bf4-8d7a-5b7a06889a12)'
+    displayName: 'Deploy Bicep Template'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    
+    inlineScript: |
+            echo "Installing Bicep CLI..."
+            az bicep install
+      
+            echo "Validating Bicep..."
+            az bicep build --file ./infrastructure/main.bicep
+      
+            echo "Deploying Bicep to Azure..."
+            az deployment group create \
+            --resource-group my-rg \
+            --template-file ./infrastructure/main.bicep \
+            --parameters \
+            appServicePlanName='Bicep-plan' \
+            webAppName='Bicep' \
+            keyVaultName='bicep-vault' \
+            location='uksouth'
