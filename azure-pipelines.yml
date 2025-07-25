@@ -28,7 +28,7 @@ stages:
               az bicep build --file ./infrastructure/main.bicep
               echo "Deploying Bicep to Azure..."
               az deployment group create \
-                --resource-group my-rg \
+                --resource-group bicep-app \
                 --template-file ./infrastructure/main.bicep \
                 --parameters \
                 appServicePlanName='Bicep-plan' \
