@@ -8,9 +8,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: appServicePlanName
   location: location
   sku: {
-    name: 'P1v2'
-    tier: 'PremiumV2'
-    size: 'P1v2'
+    name: 'Bicep-app'
+    tier: 'Free'
+    size: 'F1'
     capacity: 1
   }
   kind: 'app'
