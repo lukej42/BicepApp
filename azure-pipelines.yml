@@ -33,6 +33,6 @@ stages:
                 --template-file ./Infrastructure/main.bicep \
                 --parameters \
                 appServicePlanName='Bicep-plan' \
-                webAppName='Bicep' \
+                webAppName='Bicep-ljg' \
                 keyVaultName='bicep-vault' \
                 location='uksouth'
