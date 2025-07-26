@@ -49,10 +49,6 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
       ]
     }
   }
-  dependsOn: [
-    keyVault
-    appServicePlan
-  ]
 }
 
 resource setKeyVaultAccess 'Microsoft.KeyVault/vaults/accessPolicies@2022-07-01' = {
@@ -71,7 +67,4 @@ resource setKeyVaultAccess 'Microsoft.KeyVault/vaults/accessPolicies@2022-07-01'
       }
     ]
   }
-  dependsOn: [
-    webApp
-  ]
 }
