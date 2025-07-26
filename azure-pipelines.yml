@@ -15,6 +15,7 @@ stages:
     jobs:
       - job: DeployBicep
         steps:
+        - checkout: self
         - task: AzureCLI@2
           displayName: 'Deploy Bicep Template'
           inputs:
@@ -25,11 +26,11 @@ stages:
               echo "Installing Bicep CLI..."
               az bicep install
               echo "Validating Bicep..."
-              az bicep build --file ./infrastructure/main.bicep
+              az bicep build --file ./Infrastructure/main.bicep
               echo "Deploying Bicep to Azure..."
               az deployment group create \
                 --resource-group bicep-app \
-                --template-file ./infrastructure/main.bicep \
+                --template-file ./Infrastructure/main.bicep \
                 --parameters \
                 appServicePlanName='Bicep-plan' \
                 webAppName='Bicep' \
