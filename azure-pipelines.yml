@@ -10,7 +10,7 @@ pool:
 
 variables:
   location: 'uksouth'
-  resourceGroup: 'bicep-app'
+  resourceGroup: 'armbicep'
 
 stages:
   - stage: Deploy
