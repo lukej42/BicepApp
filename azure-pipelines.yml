@@ -10,7 +10,7 @@ pool:
 
 variables:
   location: 'uksouth'
-  resourceGroup: 'armbicep'
+  resourceGroup: 'bicep-app'
 
 stages:
   - stage: Deploy
@@ -31,7 +31,7 @@ stages:
               az bicep build --file ./Infrastructure/main.bicep
               echo "Deploying Bicep to Azure..."
               az deployment group create \
-                --resource-group armbicep \
+                --resource-group bicep-app \
                 --template-file ./Infrastructure/main.bicep \
                 --parameters \
                 appServicePlanName='Bicep-plan' \
